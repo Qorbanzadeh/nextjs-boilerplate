@@ -1,0 +1,43 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '👷 🏗 Lets check typescript, linting, styling'
+
+# Check tsconfig
+yarn run check-types ||
+(
+    echo '❗️ Type checking faild ❗️'
+)
+
+# Check eslint
+yarn run lint-eslint ||
+(
+    echo '❗️ Lint checking faild ❗️'
+)
+
+# Check prettier
+yarn run check-format ||
+(
+    echo '❗️ Style checking faild ❗️'
+)
+
+# If above actions passes:
+echo '✅ The code looks alright, now, lets test it ✅'
+
+# Test
+yarn run test ||
+(
+    echo '❗️ Test faild ❗️'
+)
+
+# If test passes:
+echo '✅ All tests passsed, now, lets build it ✅'
+
+# Build
+yarn run build ||
+(
+    echo '❗️ Build faild ❗️'
+)
+
+# If build passes:
+echo '✅ Okay, lets commit it now ✅'
