@@ -1,6 +1,5 @@
 {
-  "name": "leningo",
-  "private": true,
+  "name": "nextjs-boilerplate",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
